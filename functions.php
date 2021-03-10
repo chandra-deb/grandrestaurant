@@ -9,7 +9,7 @@ add_theme_support( 'menus' );
 add_theme_support( 'title-tag' );
 
 //* ---------------------------------Image Sizes--------------------------------------------
-add_image_size( 'logo', 202, 68, false );
+add_image_size( 'side-image', 600, 400, false );
 
 //* ---------------------------------Register Menus--------------------------------------------
 register_nav_menu( 'primary', 'Primary' );

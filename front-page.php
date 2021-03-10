@@ -75,6 +75,17 @@ if ( strlen( $name ) > 0 && strlen( $quote ) > 0 ): ?>
     </div>
     <?php endif?>
     <!-- END OF THE QUOTE -->
+
+    <!-- OUR STORY STARTS -->
+
+    <?php
+$our_story_detail = get_field( 'our_story' );
+$title            = $our_story_detail['story_title'];
+$story            = $our_story_detail['story'];
+$image            = $our_story_detail['image'] ?? null;
+
+if ( !empty( $story ) ): ?>
+
     <div class="one ppb_card_two_cols_with_image"
         style="padding: 50px 0 70px 0 !important;position:relative;padding:40px 0 40px 0;">
         <div class="standard_wrapper">
@@ -83,13 +94,9 @@ if ( strlen( $name ) > 0 && strlen( $quote ) > 0 ): ?>
                     <div class="one_half parallax_scroll_image" style="width:65%;">
                         <div class="image_classic_frame expand">
                             <div class="image_wrapper">
-                                <a href="<?php echo bloginfo(
-    'template_directory' ) .
-'/upload' ?>
-  /Screen-Shot-2558-05-27-at-10.23.50-PM.jpg" class="img_frame"><img src="<?php
-echo bloginfo(
-    'template_directory' ) .
-'/upload' ?>/Screen-Shot-2558-05-27-at-10.23.50-PM.jpg" class="portfolio_img" alt="" /></a>
+
+                                <img src="<?php echo $image ?>" />
+
                             </div>
                         </div>
                     </div>
@@ -97,19 +104,18 @@ echo bloginfo(
                         style="width:40%;position:absolute;right:90px;padding:40px;background:#ffffff;"
                         data-stellar-ratio="1.3">
                         <h2 class="ppb_title"><span class="ppb_title_first">Discover</span>Our Story</h2>
-                        <div class="ppb_subtitle">Ultimate dining experience like no other</div>
-                        <div class="page_header_sep left"></div>Sed ut perspiciatis unde omnis iste natus error
-                        sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
-                        illo inventore veritatis et quasi. Exercitation photo booth stumptown tote bag Banksy,
-                        elit small batch freegan sed. Craft beer elit seitan exercitation, photo booth et 8-bit
-                        kale chips proident chillwave deep v laborum. Aliquip veniam delectus, Marfa eiusmod
-                        Pinterest in do umami readymade.
+                        <div class="ppb_subtitle"><?php echo $title ?></div>
+                        <div class=" page_header_sep left">
+                        </div>
+                        <?php echo $story ?>
                     </div>
                     <br class="clear" />
                 </div>
             </div>
         </div>
     </div>
+    <?php endif;?>
+    <!-- OUR STORY ENDS -->
     <div class="divider one">&nbsp;</div>
     <div class="parallax title" data-image="<?php echo bloginfo(
     'template_directory' ) .
