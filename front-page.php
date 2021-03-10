@@ -9,15 +9,13 @@
                     <!-- SLIDE  -->
                     <li data-index="rs-1" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0"
                         data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300"
-                        data-thumb="<?php echo bloginfo( 'template_directory' )
-.
-'/images/background.jpg' ?>" data-rotate="0" data-saveperformance="on" data-title="Slide" data-param1="" data-param2=""
-                        data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8=""
-                        data-param9="" data-param10="" data-description="">
+                        data-thumb="<?php the_post_thumbnail_url()?>" data-rotate="0" data-saveperformance="on"
+                        data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5=""
+                        data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
                         <!-- MAIN IMAGE -->
-                        <img src="<?php echo bloginfo( 'template_directory' )
-.
-'/images/background.jpg' ?>" alt="" title="Mark_Lobo_Photography-Melbourne-Jam_Jar1" width="1110" height="740"
+
+                        <img src="<?php the_post_thumbnail_url()?>" alt=""
+                            title="Mark_Lobo_Photography-Melbourne-Jam_Jar1" width="1110" height="740"
                             data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat"
                             class="rev-slidebg" data-no-retina>
                         <!-- LAYERS -->
@@ -46,6 +44,16 @@
         </div>
         <!-- END REVOLUTION SLIDER -->
     </div>
+
+    <!-- END OF THE QUOTE -->
+
+    <?php
+$featured_quote_detail = get_field( 'featured_quote' );
+$name                  = $featured_quote_detail['name'];
+$title                 = $featured_quote_detail['title'];
+$quote                 = $featured_quote_detail['quote'];
+if ( strlen( $name ) > 0 && strlen( $quote ) > 0 ): ?>
+
     <div class="one withsmallpadding ppb_text"
         style="text-align:center;padding-bottom:0 !important;padding:50px 0 50px 0;">
         <div class="standard_wrapper">
@@ -54,15 +62,19 @@
                     <div style="margin:auto;width:60%">
                         </p>
                         <div style="font-size:30px;text-transform:uppercase;letter-spacing:-1px;font-weight:300;">
-                            Until I discovered cooking I was never really interested in anything</div>
-                        <div class="post_detail">Our Founder John Phillipe</div>
-                        <p><span style="font-family:Kristi;font-size:40px;font-weight:600;">John Phillipe</span>
+                            <?php echo $quote ?></div>
+                        <div class="post_detail"><?php echo $title ?>
+                        </div>
+                        <p><span style="font-family:Kristi;font-size:40px;font-weight:600;">
+                                <?php echo $name ?></span>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <?php endif?>
+    <!-- END OF THE QUOTE -->
     <div class="one ppb_card_two_cols_with_image"
         style="padding: 50px 0 70px 0 !important;position:relative;padding:40px 0 40px 0;">
         <div class="standard_wrapper">

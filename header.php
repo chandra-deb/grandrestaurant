@@ -55,33 +55,32 @@
 
         <div id="logo_normal" class="logo_container">
             <div class="logo_align">
-                <a id="custom_logo" class="logo_wrapper default"
+                <?php the_custom_logo();?>
+                <!-- <a id="custom_logo" class="logo_wrapper default"
                     href="http://themes.themegoods.com/grandrestaurant/demo4">
                     <img src="upload/logo@2x.png" alt="" width="154" height="59" />
-                </a>
+                </a> -->
             </div>
         </div>
 
-        <div id="logo_transparent" class="logo_container">
+        <!-- <div id="logo_transparent" class="logo_container">
             <div class="logo_align">
                 <a id="custom_logo_transparent" class="logo_wrapper hidden"
                     href="http://themes.themegoods.com/grandrestaurant/demo4">
                     <img src="upload/logo@2x_white.png" alt="" width="154" height="59" />
                 </a>
             </div>
-        </div>
+        </div> -->
         <!-- End logo -->
 
-        <div class="menu-side-menu-container">
-            <ul id="mobile_main_menu" class="mobile_main_nav">
-                <li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
-                <li class="menu-item"><a href="menu.html">Menu</a></li>
-                <li class="menu-item"><a href="more-about-us.html">About Us</a></li>
-                <li class="menu-item"><a href="image-gallery.html">Gallery</a></li>
-                <li class="menu-item"><a href="where-to-find-us.html">Where To Find Us</a></li>
-                <li class="menu-item"><a href="latest-news.html">News</a></li>
-            </ul>
-        </div>
+        <?php wp_nav_menu( [
+
+    'theme_location'  => 'primary',
+    'container_class' => 'menu-side-menu-container',
+    'menu_class'      => 'mobile_main_nav',
+    'menu_id'         => 'mobile_main_menu',
+] );?>
+
         <!-- Begin Reservation -->
         <a href="javascript:;" id="tg_sidemenu_reservation" class="button ">Reservation</a>
         <!-- End Reservation -->
@@ -144,18 +143,19 @@
             </div>
             <!-- End top bar -->
 
-            <div class="top_bar  ">
+            <div class="top_bar" style="background: red">
 
                 <div id="menu_wrapper">
 
                     <!-- Begin logo -->
                     <div id="logo_normal" class="logo_container">
                         <div class="logo_align">
-                            <a id="custom_logo" class="logo_wrapper default"
+                            <?php the_custom_logo();?>
+                            <!-- <a id="custom_logo" class="logo_wrapper default"
                                 href="http://themes.themegoods.com/grandrestaurant/demo4">
                                 <img src="upload/logo@2x.png" alt="Grand Restaurant | Restaurant Theme" width="101"
                                     height="34" style="width:101px;height:34px;" />
-                            </a>
+                            </a> -->
                         </div>
                     </div>
 

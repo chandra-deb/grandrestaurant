@@ -1,4 +1,21 @@
 <?php
+//* ---------------------------------Theme Supports--------------------------------------------
+add_theme_support( 'post-thumbnails' );
+
+add_theme_support( 'custom-logo', );
+
+add_theme_support( 'menus' );
+
+add_theme_support( 'title-tag' );
+
+//* ---------------------------------Image Sizes--------------------------------------------
+add_image_size( 'logo', 202, 68, false );
+
+//* ---------------------------------Register Menus--------------------------------------------
+register_nav_menu( 'primary', 'Primary' );
+
+//* ---------------------------------Load CSS--------------------------------------------
+
 function load_styles() {
     wp_enqueue_style( 'settings', get_template_directory_uri() .
         '/css/settings.css' );
