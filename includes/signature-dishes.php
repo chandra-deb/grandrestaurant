@@ -4,8 +4,6 @@
 $args = [
     'numberposts' => -1,
     'post_type'   => 'dish',
-    // 'meta_key'    => 'signature_dish',
-    // 'meta_value'  => 'true',
 ];
 
 $signature_dishes = [];
@@ -18,11 +16,14 @@ while ( $the_query->have_posts() ) {
     echo $type['featured_dish'];
     if ( $type['signature_dish'] == 1 ) {
         array_push( $signature_dishes, [
-            'title'      => get_the_title(),
-            'price'      => get_field( 'price' ),
-            'starred'    => get_field( 'starred' ),
-            'image_link' => get_field( 'dish_image' )
-            ,
+            'title'       => get_the_title(),
+            'price'       => get_field( 'price' ),
+            'starred'     => get_field( 'starred' ),
+            'image_link'  => get_field( 'dish_image' ),
+
+            'ingredients' => wp_get_post_terms(
+                get_the_ID(),
+                ['Ingredients'] ),
 
         ] );
     }
@@ -58,7 +59,12 @@ $signature_dish['title'] ?></span>
                                     <span class="menu_price">$<?php echo
 $signature_dish['price'] ?></span>
                                 </h5>
-                                <div class="post_detail menu_excerpt">Chicken / Olive Oil / Salt</div>
+                                <div class="post_detail menu_excerpt">
+                                    <?php
+foreach ( $signature_dish['ingredients'] as $ingredient ) {
+    echo $ingredient->name . ' / ';
+}?>
+                                </div>
                                 <?php if (
     $signature_dish['starred'] ): ?>
                                 <div class="menu_highlight" style="margin-top: -24px;"><i class="fa fa-star"></i></div>
