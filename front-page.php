@@ -1,4 +1,9 @@
 <?php get_header();?>
+<?php
+$parallel_images = get_field( 'parallel_images' );
+$p_image_1       = $parallel_images['image-1'] ?? null;
+$p_image_2       = $parallel_images['image-2'] ?? null;
+?>
 <div class="ppb_wrapper  ">
     <div class="one fullwidth ">
         <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-source="gallery"
@@ -116,15 +121,22 @@ if ( !empty( $story ) ): ?>
     </div>
     <?php endif;?>
     <!-- OUR STORY ENDS -->
+
     <div class="divider one">&nbsp;</div>
-    <div class="parallax title" data-image="<?php echo bloginfo(
-    'template_directory' ) .
-'/upload' ?>/joeyarmstrong-vancouverfoodphotographer-7195-682x1024.jpg" data-width="1024" data-height="682"
+
+    <!-- PARALLEL IMAGE 1 STARTS-->
+    <?php if ( strlen( $p_image_1['pre_caption'] ) > 0 or strlen( $p_image_1[
+    'main_caption'] ) > 0 ): ?>
+    <div class="parallax title" data-image="<?php echo $p_image_1['image'] ?>" data-width="1024" data-height="682"
         data-content-height="60">
         <div class="parallax_title">
-            <h2 class="ppb_title"><span class="ppb_title_first">Delightful</span>Experience</h2>
+            <h2 class="ppb_title"><span class="ppb_title_first"><?php echo
+$p_image_1['pre_caption'] ?></span><?php echo $p_image_1['main_caption'] ?></h2>
         </div>
     </div>
+    <?php endif;?>
+    <!-- PARALLEL IMAGE 1 ENDS -->
+
     <div class="one" style="padding:50px 0 50px 0;">
         <div class="standard_wrapper">
             <div class="page_content_wrapper">
@@ -448,6 +460,19 @@ bloginfo(
         </div>
     </div>
     <div class="divider one">&nbsp;</div>
+
+
+    <!-- OUR Restaurant STARTS-->
+    <?php
+$our_restaurant_story_detail = get_field( 'our_restaurant' );
+$title                       =
+$our_restaurant_story_detail['story_title'] ?? '';
+
+$story = $our_restaurant_story_detail['restaurant_story'] ?? '';
+
+$image = $our_restaurant_story_detail['image'] ?? null;
+
+if ( !empty( $story ) ): ?>
     <div class="one ppb_card_two_cols_with_image"
         style="padding: 70px 0 70px 0 !important;position:relative;padding:40px 0 40px 0;">
         <div class="standard_wrapper">
@@ -456,13 +481,9 @@ bloginfo(
                     <div class="one_half parallax_scroll_image" style="width:65%;">
                         <div class="image_classic_frame expand">
                             <div class="image_wrapper">
-                                <a href="<?php echo bloginfo(
-    'template_directory' ) .
-'/upload' ?>
-/dishoom-eat-drink-restaurants-gastro-pubs-large.jpg" class="img_frame"><img src="
-                                                           <?php echo bloginfo(
-    'template_directory' ) .
-'/upload' ?>/dishoom-eat-drink-restaurants-gastro-pubs-large.jpg" class="portfolio_img" alt="" /></a>
+
+                                <img src="<?php echo $image ?>" />
+
                             </div>
                         </div>
                     </div>
@@ -470,10 +491,9 @@ bloginfo(
                         style="width:40%;position:absolute;right:90px;padding:40px;background:#ffffff;"
                         data-stellar-ratio="1.3">
                         <h2 class="ppb_title"><span class="ppb_title_first">Our</span>Restaurant</h2>
-                        <div class="ppb_subtitle">Checkout our restaurant and special dishes</div>
-                        <div class="page_header_sep left"></div>Sed ut perspiciatis unde omnis iste natus error
-                        sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
-                        illo inventore veritatis et quasi.
+                        <div class="ppb_subtitle"><?php echo $title ?></div>
+                        <div class="page_header_sep left"></div>
+                        <?php echo $story ?>
                         <br />
                         <br />
                         <a href="image-gallery.html" class="button">View Gallery</a>
@@ -483,6 +503,10 @@ bloginfo(
             </div>
         </div>
     </div>
+    <?php endif;?>
+
+    <!-- OUR Restaurant ENDS-->
+
     <div class="divider one">&nbsp;</div>
 </div>
 
