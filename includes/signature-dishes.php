@@ -78,4 +78,5 @@ foreach ( $signature_dish['ingredients'] as $ingredient ) {
             </div>
         </div>
     </div>
-    <?php endif;?>
+
+    <?php wp_reset_query();endif;?>
