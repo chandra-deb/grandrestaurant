@@ -137,65 +137,37 @@ $p_image_1['pre_caption'] ?></span><?php echo $p_image_1['main_caption'] ?></h2>
     <?php endif;?>
     <!-- PARALLEL IMAGE 1 ENDS -->
 
-    <div class="one" style="padding:50px 0 50px 0;">
-        <div class="standard_wrapper">
-            <div class="page_content_wrapper">
-                <div class="inner">
-                    <div style="margin:auto;width:60%;text-align:center;">
-                        <h2 class="ppb_menu_title">Signature Dishes</h2>
-                        <br class="clear" />
-                        <br />
-                        <div class="one ">
-                            <div id="menu_3197" class="menu_content_classic">
-                                <h5 class="menu_post">
-                                    <span class="menu_title">Baked Potato Pizza</span>
-                                    <span class="menu_dots"></span>
-                                    <span class="menu_price">$12</span>
-                                </h5>
-                                <div class="post_detail menu_excerpt">Potato / Bread / Cheese</div>
-                                <div class="menu_highlight"><i class="fa fa-star"></i></div>
-                            </div>
-                        </div>
-                        <div class="one ">
-                            <div id="menu_3190" class="menu_content_classic">
-                                <h5 class="menu_post">
-                                    <span class="menu_title">Italian Source Mushroom</span>
-                                    <span class="menu_dots"></span>
-                                    <span class="menu_price">$19.9</span>
-                                </h5>
-                                <div class="post_detail menu_excerpt">Mushroom / Garlic / Veggies</div>
-                            </div>
-                        </div>
-                        <div class="one ">
-                            <div id="menu_3191" class="menu_content_classic">
-                                <h5 class="menu_post">
-                                    <span class="menu_title">Fried Potatoes With Garlic</span>
-                                    <span class="menu_dots"></span>
-                                    <span class="menu_price">$12</span>
-                                </h5>
-                                <div class="post_detail menu_excerpt">Potatoes / Olive Oil / Garlic</div>
-                            </div>
-                        </div>
-                        <div class="one ">
-                            <div id="menu_3192" class="menu_content_classic">
-                                <h5 class="menu_post">
-                                    <span class="menu_title">Tuna Roast Source</span>
-                                    <span class="menu_dots"></span>
-                                    <span class="menu_price">$24.5</span>
-                                </h5>
-                                <div class="post_detail menu_excerpt">Tuna / Potatoes / Rice</div>
-                                <div class="menu_highlight"><i class="fa fa-star"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <br class="clear" />
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Signature Template Part -->
+    <?php echo get_template_part( 'includes/signature-dishes' ) ?>
+    <!-- Signature Template Part Ends-->
+
     <div class="ppb_portfolio one nopadding " style="padding:0px 0 0px 0;">
         <div class="page_content_wrapper fullwidth">
             <div class="portfolio_filter_wrapper four_cols gallery portfolio-content section content clearfix">
+                <div class="element classic3_cols">
+                    <div class="one_fourth gallery4 filterable static animated1">
+                        <div class="button_wrapper">
+                            <div class="button_center">
+                                <div class="button_content"><a data-title="Salted Fried Chicken" href="
+                                   <?php echo bloginfo( 'template_directory' )
+. '/upload' ?>/2213.jpg" class="fancy-gallery" title=""><i class="fa fa-search"></i></a></div>
+                            </div>
+                        </div><img src="<?php echo bloginfo(
+    'template_directory' ) . '/upload' ?>/2213-400x400-1434120415.jpg" alt="" />
+                    </div>
+                    <br class="clear" />
+                    <div id="portfolio_desc_3194" class="portfolio_desc portfolio4 filterable ">
+                        <div id="menu_3194" class="menu_content_classic">
+                            <h5 class="menu_post">
+                                <span class="menu_title">Salted Fried Chicken</span>
+                                <span class="menu_dots"></span>
+                                <span class="menu_price">$20</span>
+                            </h5>
+                            <div class="post_detail menu_excerpt">Chicken / Olive Oil / Salt</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="element classic3_cols">
                     <div class="one_fourth gallery4 filterable static animated1">
                         <div class="button_wrapper">
@@ -470,7 +442,9 @@ $our_restaurant_story_detail['story_title'] ?? '';
 
 $story = $our_restaurant_story_detail['restaurant_story'] ?? '';
 
-$image = $our_restaurant_story_detail['image'] ?? null;
+$image            = $our_restaurant_story_detail['image'] ?? null;
+$linked_page      = $our_restaurant_story_detail['linked_page'] ?? '';
+$linked_page_text = $our_restaurant_story_detail['linked_page_text'] ?? '';
 
 if ( !empty( $story ) ): ?>
     <div class="one ppb_card_two_cols_with_image"
@@ -496,7 +470,11 @@ if ( !empty( $story ) ): ?>
                         <?php echo $story ?>
                         <br />
                         <br />
-                        <a href="image-gallery.html" class="button">View Gallery</a>
+                        <?php if ( !empty( $linked_page_text ) and !empty(
+    $linked_page ) ): ?>
+                        <a href="<?php echo $linked_page ?>" class="button">
+                            <?php echo $linked_page_text ?></a>
+                        <?php endif;?>
                     </div>
                     <br class="clear" />
                 </div>
