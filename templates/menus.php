@@ -18,9 +18,15 @@ the_post_thumbnail_url()?>);"></div>
 </div>
 
 <div class="ppb_wrapper hasbg withtopbar">
+
+
     <!-- Signature Template Part -->
-    <?php echo get_template_part( 'includes/signature-dishes' ) ?>
+    <?php echo get_template_part( 'includes/signature-dishes', null, [
+    'title' => 'Signature'] ) ?>
     <!-- Signature Template Part Ends-->
+
+
+    <!-- Parallel Image 1 Starts -->
     <?php
 $p_image_1 = get_field( 'parallel_image_1' ) ?? null;
 if ( $p_image_1 != null ): ?>
@@ -28,6 +34,43 @@ if ( $p_image_1 != null ): ?>
         data-content-height="60">
     </div>
     <?php endif?>
+    <!-- Parallel Image 1 Ends -->
+
+
+    <!-- Main Courses Starts -->
+    <?php
+
+// args
+$args = [
+    'numberposts' => -1,
+    'post_type'   => 'dish',
+];
+
+$main_courses = [];
+// query
+$the_query = new WP_Query( $args );
+while ( $the_query->have_posts() ) {
+    $the_query->the_post();
+    // echo the_title( '<h1>', '</h1>' );
+    $type = get_field( 'dish_types' );
+    if ( $type['main_course'] == 1 ) {
+        array_push( $main_courses, [
+            'title'       => get_the_title(),
+            'price'       => get_field( 'price' ),
+            'starred'     => get_field( 'starred' ),
+            // 'image_link'  => get_field( 'dish_image' ),
+
+            'ingredients' => wp_get_post_terms(
+                get_the_ID(),
+                ['Ingredients'] ),
+
+        ] );
+    }
+}
+wp_reset_query();
+?>
+    <?php if ( count( $main_courses ) > 0 ): ?>
+
     <div class="one" style="padding:50px 0 50px 0;">
         <div class="standard_wrapper">
             <div class="page_content_wrapper">
@@ -36,96 +79,48 @@ if ( $p_image_1 != null ): ?>
                         <h2 class="ppb_menu_title">Main Courses</h2>
                         <br class="clear" />
                         <br />
-                        <div class="one_half ">
-                            <div id="menu_3197" class="menu_content_classic">
-                                <h5 class="menu_post">
-                                    <span class="menu_title">Baked Potato Pizza</span>
-                                    <span class="menu_dots"></span>
-                                    <span class="menu_price">$12</span>
-                                </h5>
-                                <div class="post_detail menu_excerpt">Potato / Bread / Cheese</div>
-                                <div class="menu_highlight"><i class="fa fa-star"></i></div>
-                            </div>
-                        </div>
-                        <div class="one_half last">
-                            <div id="menu_3172" class="menu_content_classic">
-                                <h5 class="menu_post">
-                                    <span class="menu_title">Pork Tenderloin marinated in Yogurt</span>
-                                    <span class="menu_dots"></span>
-                                    <span class="menu_price">$20</span>
-                                </h5>
-                                <div class="post_detail menu_excerpt">Pork / Tenderloin / Yogurt</div>
-                            </div>
-                        </div>
-                        <div class="one_half ">
-                            <div id="menu_3173" class="menu_content_classic">
-                                <h5 class="menu_post">
-                                    <span class="menu_title">Grilled Pork with Preserved Lemons</span>
-                                    <span class="menu_dots"></span>
-                                    <span class="menu_price">$22</span>
-                                </h5>
-                                <div class="post_detail menu_excerpt">Pork / Lemons / Onions</div>
-                                <div class="menu_highlight"><i class="fa fa-star"></i></div>
-                            </div>
-                        </div>
-                        <div class="one_half last">
-                            <div id="menu_3174" class="menu_content_classic">
-                                <h5 class="menu_post">
-                                    <span class="menu_title">Lemon-Rosemary Chicken</span>
-                                    <span class="menu_dots"></span>
-                                    <span class="menu_price">$19.9</span>
-                                </h5>
-                                <div class="post_detail menu_excerpt">Chicken / Rosemary / Lemon</div>
-                            </div>
-                        </div>
-                        <div class="one_half ">
-                            <div id="menu_3175" class="menu_content_classic">
-                                <h5 class="menu_post">
-                                    <span class="menu_title">Apple Smoked Chicken with White Sauce</span>
-                                    <span class="menu_dots"></span>
-                                    <span class="menu_price">$18.9</span>
-                                </h5>
-                                <div class="post_detail menu_excerpt">Chicken / Apple / Tomatos</div>
-                                <div class="menu_highlight"><i class="fa fa-star"></i></div>
-                            </div>
-                        </div>
-                        <div class="one_half last">
-                            <div id="menu_3176" class="menu_content_classic">
-                                <h5 class="menu_post">
-                                    <span class="menu_title">Braised Chicken Breast with White Wine and Shallots</span>
-                                    <span class="menu_dots"></span>
-                                    <span class="menu_price">$24.5</span>
-                                </h5>
-                                <div class="post_detail menu_excerpt">Chicken Breast / Wine</div>
-                            </div>
-                        </div>
-                        <div class="one_half ">
-                            <div id="menu_3177" class="menu_content_classic">
-                                <h5 class="menu_post">
-                                    <span class="menu_title">Grilled Hanger Steak with Harissa and Pickled Red
-                                        Onions</span>
-                                    <span class="menu_dots"></span>
-                                    <span class="menu_price">$29.9</span>
-                                </h5>
-                                <div class="post_detail menu_excerpt">Beef / Onions / Tomatos</div>
-                            </div>
-                        </div>
-                        <div class="one_half last">
+                        <?php
+$index = 1;
+foreach ( $main_courses as $main_course ): ?>
+
+                        <div class="one_half <?php if ( $index % 2 == 0 ) {
+    echo 'last';} else {
+    echo '';
+}
+?>">
                             <div id="menu_3178" class="menu_content_classic">
                                 <h5 class="menu_post">
-                                    <span class="menu_title">Meatloaf with Black Pepper-Honey BBQ</span>
+                                    <span class="menu_title"><?php echo
+$main_course
+['title'] ?></span>
                                     <span class="menu_dots"></span>
-                                    <span class="menu_price">$19.9</span>
+                                    <span class="menu_price">$<?php echo
+$main_course
+['price'] ?></span>
                                 </h5>
-                                <div class="post_detail menu_excerpt">Pepper / Chicken / Honey</div>
+                                <div class="post_detail menu_excerpt"> <?php
+foreach ( $main_course['ingredients'] as $ingredient ) {
+    echo $ingredient->name . ' / ';
+}?></div>
+                                <?php if (
+    $main_course['starred'] ): ?>
+                                <div class="menu_highlight"><i class="fa fa-star"></i></div>
+                                <?php endif;?>
                             </div>
                         </div>
+                        <?php $index++?>
+                        <?php endforeach;?>
                     </div>
                     <br class="clear" />
                 </div>
             </div>
         </div>
     </div>
+    <?php endif;?>
+    <!-- Main Courses Ends -->
+
+
+    <!-- Parallel Image 2 Starts -->
     <?php
 $p_image_2 = get_field( 'parallel_image_2' ) ?? null;
 if ( $p_image_2 != null ): ?>
@@ -133,6 +128,9 @@ if ( $p_image_2 != null ): ?>
         data-content-height="60">
     </div>
     <?php endif;?>
+    <!-- Parallel Image 2 Ends -->
+
+
     <div class="one" style="padding:50px 0 50px 0;">
         <div class="standard_wrapper">
             <div class="page_content_wrapper">
