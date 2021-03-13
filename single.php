@@ -8,7 +8,7 @@ the_post_thumbnail_url()?>);"></div>
     <div class="page_title_wrapper baseline" data-stellar-ratio="1.3">
         <div class="page_title_inner baseline">
             <h1 class="withtopbar">
-                <span class="ppb_title_first">Our</span>Menu Classic
+                <span class="ppb_title_first"></span><?php the_title();?>
             </h1>
         </div>
     </div>
@@ -52,7 +52,13 @@ the_post_thumbnail_url()?>);"></div>
 
 
 
-																																                                                 " title="<?php
+
+
+
+
+
+
+																																												                                                 " title="<?php
         the_title
             ()
         ;
@@ -75,21 +81,18 @@ the_post_thumbnail_url()?>);"></div>
                                                 <?php comments_number();?>
                                             </a>
                                         </span>
-                                        <span class="post_readmore">
-                                            <a class="readmore" href="<?php
-        the_permalink();?>">Read More</a>
-                                        </span>
+
                                     </div>
                                 </div>
 
-                                <?php if ( has_post_thumbnail() ): ?>
-                                <a href="<?php the_permalink();?>">
-                                    <?php the_post_thumbnail( 'tmb' )?>
-                                </a>
-                                <?php endif;?>
+                                <!-- <?php if ( has_post_thumbnail() ): ?>
+										                                <a href="<?php the_permalink();?>">
+										                                    <?php the_post_thumbnail( 'tmb' )?>
+										                                </a>
+										                                <?php endif;?> -->
                                 <br class="clear" />
 
-                                <p><?php the_excerpt();?></p>
+                                <p><?php the_content();?></p>
                             </div>
                             <div class=" post_share_bubble">
                                 <div class="post_share_bubble_wrapper">
@@ -112,6 +115,7 @@ the_post_thumbnail_url()?>);"></div>
                         </div>
 
                     </div>
+                    <?php comments_template(); ?>
 
                 </div>
                 <?php endwhile;endif;?>
@@ -175,7 +179,7 @@ $tags = get_tags();
 foreach ( $tags as $tag ): ?>
 
 
-                                    <a href="<?php echo $tag->slug ?>"
+                                    <a href="<?php echo( $tag->slug) ?>"
                                         class="tag-cloud-link tag-link-23 tag-link-position-1" style="font-size: 13px;">
                                         <?php echo $tag->name; ?>
                                     </a>
