@@ -1,12 +1,20 @@
 <?php
 //* ---------------------------------Theme Supports--------------------------------------------
-add_theme_support( 'post-thumbnails' );
+add_theme_support( 'post-thumbnails' ,array( 'post', 'page' ));
 
 add_theme_support( 'custom-logo', );
 
 add_theme_support( 'menus' );
 
 add_theme_support( 'title-tag' );
+
+add_theme_support( 'widgets' );
+
+
+//* ---------------------------------Register  Widgets--------------------------------------------
+register_sidebar(['name' =>'Sidebar', 'id' => 'sidebar']);
+
+register_sidebar(['name' =>'Footer', 'id' => 'footer']);
 
 //* ---------------------------------Image Sizes--------------------------------------------
 add_image_size( 'tmb', 600, 400, false );

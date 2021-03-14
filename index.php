@@ -1,14 +1,16 @@
 <?php get_header();?>
 <div id="page_caption" class="hasbg parallax baseline notransparentmenu">
     <div class="parallax_overlay_header"></div>
+
     <div id="bg_regular" style="background-image:url(<?php
 the_post_thumbnail_url()?>);"></div>
+
 
 
     <div class="page_title_wrapper baseline" data-stellar-ratio="1.3">
         <div class="page_title_inner baseline">
             <h1 class="withtopbar">
-                <span class="ppb_title_first">Our</span>Menu Classic
+                <span class="ppb_title_first"><?php echo "get_field('sub_title')"?></span><?php the_title()?>
             </h1>
         </div>
     </div>
@@ -114,7 +116,9 @@ the_post_thumbnail_url()?>);"></div>
                     </div>
 
                 </div>
-                <?php endwhile;endif;?>
+                <?php endwhile;wp_reset_query();endif;?>
+
+
 
 
                 <br class="clear" />
@@ -146,45 +150,7 @@ the_post_thumbnail_url()?>);"></div>
                     <div class="content">
 
                         <ul class="sidebar_widget">
-                            <li id="text-3" class="widget widget_text">
-                                <h2 class="widgettitle">About Us</h2>
-                                <div class="textwidget">
-                                    <p><?php echo get_the_author_meta('description'); ?></p>
-                                </div>
-                            </li>
-                            <li id="categories-3" class="widget widget_categories">
-                                <h2 class="widgettitle">Categories</h2>
-                                <ul>
-                                    <?php
-$categories = get_categories();
-foreach ( $categories as $category ):
-?>
-                                    <li class="cat-item "><a href="<?php echo
-get_category_link( $category ) ?>"><?php
-echo $category->name; ?></a> (<?php echo $category->count ?>) </li>
-                                    <?php endforeach;?>
-                                </ul>
-                            </li>
-
-                            <li id="tag_cloud-2" class="widget widget_tag_cloud">
-                                <h2 class="widgettitle">Tags</h2>
-                                <div class="tagcloud">
-                                    <?php
-
-$tags = get_tags();
-foreach ( $tags as $tag ): ?>
-
-
-                                    <a href="<?php echo $tag->slug ?>"
-                                        class="tag-cloud-link tag-link-23 tag-link-position-1" style="font-size: 13px;">
-                                        <?php echo $tag->name; ?>
-                                    </a>
-
-                                    <?php endforeach?>
-
-                                </div>
-                            </li>
-
+                            <?php dynamic_sidebar('sidebar'); ?>
                         </ul>
 
                     </div>

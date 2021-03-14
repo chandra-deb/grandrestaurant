@@ -8,7 +8,7 @@ the_post_thumbnail_url()?>);"></div>
     <div class="page_title_wrapper baseline" data-stellar-ratio="1.3">
         <div class="page_title_inner baseline">
             <h1 class="withtopbar">
-                <span class="ppb_title_first"></span><?php the_title();?>
+                <span class="ppb_title_first"></span><?php the_archive_title();?>
             </h1>
         </div>
     </div>

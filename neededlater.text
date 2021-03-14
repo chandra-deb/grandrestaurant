@@ -1,0 +1,9 @@
+ <?php if ( $index % 2 == 0 ) {
+    echo 'last';} else {
+    echo '';
+}
+?>
+
+a little problem with posts page ...
+the latest post's title 
+and featured image is being shown on the posts page title and feature image

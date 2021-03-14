@@ -44,10 +44,10 @@ if ( $p_image_1 != null ): ?>
 
     <!-- Main Courses Starts -->
     <?php get_template_part( 'includes/dishes', null, [
-    // 'title'      => 'Main Courses',
-    'type'       => 'main_course',
-    'layout_col' => 3,
-    // 'layout_width' => '100%',
+    'title'        => 'Main Courses',
+    'type'         => 'main_course',
+    'layout_col'   => 3,
+    'layout_width' => '100%',
 ]
 )?>
     <!-- Main Courses Ends -->

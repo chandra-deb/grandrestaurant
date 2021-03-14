@@ -31,7 +31,7 @@ $p_image_2       = $parallel_images['image-2'] ?? null;
                             data-type="text" data-responsive_offset="on"
                             data-frames='[{"from":"opacity:0;","speed":300,"to":"","delay":450,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"auto:auto;","ease":"nothing"}]'
                             data-textAlign="['','','','']" style="z-index: 5; white-space: nowrap;text-transform:left;">
-                            Welcome to </div>
+                            <?php bloginfo( 'title' );?> </div>
 
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption title   tp-resizeme" id="slide-1-layer-2" data-x="center"
@@ -40,7 +40,8 @@ $p_image_2       = $parallel_images['image-2'] ?? null;
                             data-frames='[{"from":"opacity:0;","speed":300,"to":"","delay":500,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"auto:auto;","ease":"nothing"}]'
                             data-textAlign="['','','','']"
                             style="z-index: 6; white-space: nowrap; color: #1a3853;text-transform:left;">
-                            Grand<strong>Restaurant</strong> </div>
+                            <strong><?php bloginfo( 'description' );?> </strong>
+                        </div>
                     </li>
                 </ul>
                 <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
