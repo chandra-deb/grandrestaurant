@@ -1,6 +1,6 @@
 <?php get_header();?>
 <?php
-$parallel_images = get_field( 'parallel_images' );
+$parallel_images = get_field( 'parallel_images' ) ;
 $p_image_1       = $parallel_images['image-1'] ?? null;
 $p_image_2       = $parallel_images['image-2'] ?? null;
 ?>
@@ -55,9 +55,9 @@ $p_image_2       = $parallel_images['image-2'] ?? null;
 
     <?php
 $featured_quote_detail = get_field( 'featured_quote' );
-$name                  = $featured_quote_detail['name'];
-$title                 = $featured_quote_detail['title'];
-$quote                 = $featured_quote_detail['quote'];
+$name                  = $featured_quote_detail['name'] ?? '';
+$title                 = $featured_quote_detail['title'] ?? '';
+$quote                 = $featured_quote_detail['quote'] ?? '';
 if ( strlen( $name ) > 0 && strlen( $quote ) > 0 ): ?>
 
     <div class="one withsmallpadding ppb_text"
@@ -86,8 +86,8 @@ if ( strlen( $name ) > 0 && strlen( $quote ) > 0 ): ?>
 
     <?php
 $our_story_detail = get_field( 'our_story' );
-$title            = $our_story_detail['story_title'];
-$story            = $our_story_detail['story'];
+$title            = $our_story_detail['story_title'] ?? '';
+$story            = $our_story_detail['story'] ?? '';
 $image            = $our_story_detail['image'] ?? null;
 
 if ( !empty( $story ) ): ?>
@@ -126,8 +126,8 @@ if ( !empty( $story ) ): ?>
     <div class="divider one">&nbsp;</div>
 
     <!-- PARALLEL IMAGE 1 STARTS-->
-    <?php if ( strlen( $p_image_1['pre_caption'] ) > 0 or strlen( $p_image_1[
-    'main_caption'] ) > 0 ): ?>
+    <?php if ( strlen( $p_image_1['pre_caption'] ?? '' ) > 0 or strlen( $p_image_1[
+    'main_caption'] ?? '') > 0 ): ?>
     <div class="parallax title" data-image="<?php echo $p_image_1['image'] ?>" data-width="1024" data-height="682"
         data-content-height="60">
         <div class="parallax_title">
@@ -229,9 +229,9 @@ foreach ( $course['ingredients'] as $ingredient ) {
 
 
     <!-- PARALLEL IMAGE 2 STARTS -->
-    <?php if ( strlen( $p_image_2['pre_caption'] ) > 0 or strlen(
+    <?php if ( strlen( $p_image_2['pre_caption'] ?? '') > 0 or strlen(
     $p_image_2[
-        'main_caption'] ) > 0 ): ?>
+        'main_caption'] ?? '' ) > 0 ): ?>
     <div class="parallax title" data-image="<?php echo $p_image_2['image'] ?>" data-width="1024" data-height="682"
         data-content-height="60">
         <div class="parallax_title">

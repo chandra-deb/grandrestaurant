@@ -81,33 +81,8 @@
     'menu_id'         => 'mobile_main_menu',
 ] );?>
 
-        <!-- Begin Reservation -->
-        <a href="javascript:;" id="tg_sidemenu_reservation" class="button ">Reservation</a>
-        <!-- End Reservation -->
 
-        <!-- Begin side menu sidebar -->
-        <div class="page_content_wrapper">
-            <div class="sidebar_wrapper">
-                <div class="sidebar">
 
-                    <div class="content">
-
-                        <ul class="sidebar_widget">
-                            <li id="text-12" class="widget widget_text">
-                                <h2 class="widgettitle">Location</h2>
-                                <div class="textwidget">
-                                    <p><i class="fa fa-map-marker marginright"></i>732/21 Second Street, Manchester,
-                                        King Street, Kingston United Kingdom</p>
-                                </div>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- End side menu sidebar -->
     </div>
     <!-- End mobile menu -->
 
